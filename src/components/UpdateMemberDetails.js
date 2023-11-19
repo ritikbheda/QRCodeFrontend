@@ -18,7 +18,7 @@ const UpdateMemberDetails = ({ member_id }) => {
         );
         setMember(response.data.data);
 
-        response.data.data.family_members.map(member => {
+        response.data.data.family_members.forEach(member => {
           let newMember = {
             familyMemberId: member._id,
             checkedInStatus: member.checked_in,

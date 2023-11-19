@@ -7,7 +7,7 @@ import Login from './pages/login';
 import './App.css';
 import Scanner from './components/Scanner';
 
-import ProtectedRoute from './components/ProtectedRoute';
+// import ProtectedRoute from './components/ProtectedRoute';
 import LogoutButton from './pages/logout';
 
 function App() {
