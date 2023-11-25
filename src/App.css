@@ -32,8 +32,30 @@
 
 .submit-button {
   color: #fff;
-  padding: 0 5px;
-  border: 1px solid #09992b;
-  border-radius: 5px;
-  background-color: #09992b;
+  padding: 5px 10px;
+  border: 1px solid #2bd642;
+  box-shadow: 3px 5px 0px rgba(0, 0, 0, 1);
+  /* border-radius: 5px; */
+  background-color: #2bd642;
+}
+
+.bg-my-yellow {
+  background-color: #ffcc00;
+}
+
+.bg-my-green {
+  background-color: #2bd642;
+}
+
+.bg-my-red {
+  background-color: #db5025;
+}
+
+.essential-box {
+  padding: 16px;
+  width: 100%;
+}
+
+.negative-10-margin {
+  margin-top: -5px;
 }

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Text, Card, CardBody } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  List,
+  ListItem,
+} from '@chakra-ui/react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -72,60 +77,89 @@ const UpdateMemberDetails = ({ member_id }) => {
 
   return (
     <div>
-      <div>
-        <>
-          <Card>
-            <CardBody>
-              <div>
-                <Text as="span">Member name: </Text>
-                <Text as="span" className="member-info">
-                  {member.head_member}
+      <Box className="essential-box">
+        <Box>
+          <Text fontSize="3xl">Member Info</Text>
+        </Box>
+
+        <Box marginTop={20}>
+          <List
+            borderWidth="1px"
+            borderColor="black"
+            w="90%"
+            boxShadow="3px 5px 0px rgba(0, 0, 0, 1)"
+          >
+            <ListItem
+              borderBottom="1px"
+              borderColor="black"
+              padding={2}
+              className="bg-my-yellow"
+            >
+              <Text fontSize="sm">Name:</Text>
+              <Text fontSize="xl" className="negative-10-margin ">
+                {member.head_member}
+              </Text>
+            </ListItem>
+            <ListItem
+              borderBottom="1px"
+              borderColor="black"
+              padding={2}
+              className="bg-my-yellow"
+            >
+              <Text fontSize="sm">Email:</Text>
+              <Text fontSize="xl" className="negative-10-margin ">
+                {member.email}
+              </Text>
+            </ListItem>
+            {member.paid ? (
+              ''
+            ) : (
+              <ListItem
+                borderBottom="1px"
+                borderColor="black"
+                padding={2}
+                className="bg-my-red"
+              >
+                <Text fontSize="sm">Paid:</Text>
+                <Text fontSize="xl" className="negative-10-margin ">
+                  {member.paid ? 'Yes' : 'No'}
                 </Text>
-              </div>
-              <div>
-                <Text as="span">Email: </Text>
-                <Text as="span" className="member-info">
-                  {member.email}
-                </Text>
-              </div>
-              <div>
-                <Text as="span">Paid: </Text>
-                <Text as="span" className={member.paid ? '' : 'red-bg'}>
-                  {member.paid ? 'yes' : 'no'}
-                </Text>
-              </div>
-              <div>
-                <Text as="span">Registered: </Text>
-                <Text as="span" className={member.registered ? '' : 'red-bg'}>
-                  {member.registered ? 'yes' : 'no'}
-                </Text>
-              </div>
-              <div>
-                <Text as="span">Check in:</Text>
+              </ListItem>
+            )}
+
+            <ListItem
+              borderBottom="1px"
+              borderColor="black"
+              padding={2}
+              className="bg-my-green"
+            >
+              <Text fontSize="sm">Family Members:</Text>
+              <List fontSize="xl" className="negative-10-margin ">
                 {member.family_members.map((family_member, index) => (
-                  <li
-                    key={family_member._id}
-                    className="list-style-none family-member-info"
-                  >
+                  <ListItem key={family_member._id} pl={4}>
                     <input
                       type="checkbox"
                       name={index}
                       value={family_member._id}
                       onChange={checkboxHandler}
-                    />{' '}
-                    {'  '}
+                    />
                     {family_member.member}
-                  </li>
+                  </ListItem>
                 ))}
-              </div>
-            </CardBody>
-          </Card>
-        </>
-      </div>
-
-      <button type="button" onClick={handleSubmit} className="submit-button">
-        Submit
-      </button>
+              </List>
+            </ListItem>
+          </List>
+        </Box>
+        <Box my={4}>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className="submit-button"
+          >
+            Submit
+          </button>
+        </Box>
+      </Box>
     </div>
   );
 };
